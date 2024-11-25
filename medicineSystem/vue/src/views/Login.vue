@@ -26,9 +26,6 @@
           </el-form-item>
           <div class="footer-links">
             <div class="register-link">还没有注册? 请 <span @click="() => { this.$router.push('/register') }">注册</span></div>
-            <div class="forgot-password-link">
-              <a @click.prevent="navigateToForgotPassword">忘记密码?</a>
-            </div>
           </div>
         </el-form>
       </div>

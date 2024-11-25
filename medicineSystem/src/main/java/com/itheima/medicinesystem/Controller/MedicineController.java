@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.itheima.medicinesystem.Entity.Agency;
 import com.itheima.medicinesystem.Entity.Medicine;
 import com.itheima.medicinesystem.common.Result;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,16 +63,16 @@ public class MedicineController {
 
     //根据ano重新排序
     @PutMapping("/reorder")
-    public Result reordermedicine(@RequestBody List<Medicine> medicines) throws SQLException {
-        // 遍历药品列表并更新药品编号
+    @Transactional // 保证事务性
+    public Result reorderMedicine(@RequestBody List<Medicine> medicines) {
+        // 遍历药品列表，设置新的编号并更新
         for (int i = 0; i < medicines.size(); i++) {
             Medicine medicine = medicines.get(i);
-            // 设置新的药品编号，假设从 1 开始
-            medicine.setMno(Integer.valueOf(String.valueOf(i + 1)));
-            // 更新药品信息
-            medicineService.update(medicine);
+            medicine.setMno(i + 1); // 设置新的编号，从1开始
         }
-        return Result.success("经办人编号重新排序成功");
+        // 批量更新数据库
+        medicineService.update((Medicine) medicines); // 批量更新方法，需自行实现
+        return Result.success("药品编号重新排序成功");
     }
 
     // 新增搜索药品接口

@@ -35,12 +35,13 @@
       <!-- 操作按钮 -->
       <div style="margin-bottom: 20px; display: flex; gap: 10px;">
         <el-button type="primary" @click="dialogVisible = true" v-role="'管理员'">添加经办</el-button>
-        <el-button @click="reorderAgency" style="margin-left: auto;" v-role="'管理员'">重新排序</el-button>
+<!--        <el-button @click="reorderAgency" style="margin-left: auto;" v-role="'管理员'">重新排序</el-button>-->
         <el-button
             @click="deleteSelectedAgencies"
             :disabled="multipleSelection.length === 0"
             type="danger"
             v-role="'管理员'"
+            style="margin-left: auto;"
         >
           批量删除
         </el-button>
@@ -54,7 +55,7 @@
           @selection-change="handleSelectionChange"
           stripe
           border
-          style="width: 100%;"
+          style="width: 100%; border-radius: 10px"
       >
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column prop="ano" label="编号" width="100" sortable></el-table-column>

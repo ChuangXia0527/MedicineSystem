@@ -2,7 +2,7 @@
   <div class="page-404">
     <h1>哎呀！页面不见了。</h1>
     <p>我们找不到你请求的页面。可能它已经被移除，或者你输入了错误的地址。</p>
-    <router-link to="/home" class="home-link">返回首页</router-link>
+    <router-link to="/userhome" class="home-link">返回首页</router-link>
   </div>
 </template>
 

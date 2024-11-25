@@ -31,12 +31,13 @@
 
       <div style="margin-bottom: 20px; display: flex; gap: 10px;">
         <el-button type="primary" @click="dialogVisible = true" v-role="'管理员'">添加药品</el-button>
-        <el-button @click="reorderMedicines" style="margin-left: auto;" v-role="'管理员'">重新排序</el-button>
+<!--        <el-button @click="reorderMedicines" style="margin-left: auto;" v-role="'管理员'">重新排序</el-button>-->
         <el-button
             @click="deleteSelectedMedicines"
             :disabled="multipleSelection.length === 0"
             type="danger"
             v-role="'管理员'"
+            style="margin-left: auto;"
         >
           批量删除
         </el-button>
@@ -50,7 +51,7 @@
           @selection-change="handleSelectionChange"
           stripe
           border
-          style="width: 100%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);"
+          style="width: 100%; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border-radius: 10px"
       >
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column prop="mno" label="编号" width="100" sortable></el-table-column>
@@ -348,6 +349,7 @@ export default {
       request.put('/medicine/reorder', updatedMedicines)
           .then(response => {
             console.log('重新排序的响应:', response); // 打印响应
+            this.fetchMedicines(); // 调用方法重新获取药品列表
             if (response && response.code === "200") {
               this.$message.success('药品编号重新排序成功');
               this.fetchMedicines(); // 重新获取药品列表

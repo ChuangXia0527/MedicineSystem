@@ -12,9 +12,9 @@ import lombok.Setter;
 public class Medicine {
     @Setter
     @TableId(type = IdType.AUTO)//指定主键
-    public Integer mno;
-    public String mname;
-    public String mmode;
-    public String mefficacy;
+    public Integer mno;//药品编号
+    public String mname;//药品名称
+    public String mmode;//用法 内服or外用
+    public String mefficacy;//功效
 
 }

@@ -85,30 +85,16 @@
         </el-form>
       </div>
 
-<!--      &lt;!&ndash; 操作按钮 &ndash;&gt;
-      <div style="margin-bottom: 20px; display: flex; gap: 10px;">
-        <el-button
-            type="primary"
-            @click="dialogVisible = true"
-        >添加顾客</el-button>
-        <el-button
-            @click="deleteSelectedClients"
-            :disabled="multipleSelection.length === 0"
-            type="danger"
-        >批量删除</el-button>
-        <el-button
-            @click="exportToPDF"
-        >保存数据</el-button>
-      </div>-->
 
       <div style="margin-bottom: 20px; display: flex; gap: 10px;">
         <el-button type="primary" @click="dialogVisible = true" v-role="'管理员'">添加顾客</el-button>
-        <el-button @click="reorderclient" style="margin-left: auto;" v-role="'管理员'">重新排序</el-button>
+<!--        <el-button @click="reorderclient" style="margin-left: auto;" v-role="'管理员'">重新排序</el-button>-->
         <el-button
             @click="deleteSelectedClients"
             :disabled="multipleSelection.length === 0"
             type="danger"
             v-role="'管理员'"
+            style="margin-left: auto;"
         >
           批量删除
         </el-button>
@@ -195,7 +181,7 @@
           @selection-change="handleSelectionChange"
           stripe
           border
-          style="width: 100%;"
+          style="width: 100%; border-radius: 10px"
       >
         <el-table-column type="selection" width="50"></el-table-column>
         <el-table-column prop="cno" label="编号" width="75" sortable></el-table-column>

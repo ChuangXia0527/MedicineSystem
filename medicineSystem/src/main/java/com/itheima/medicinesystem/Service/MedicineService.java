@@ -86,4 +86,9 @@ public class MedicineService {
         }
     }
 
+    public void batchUpdate(List<Medicine> medicines) {//批量更新
+        medicines.forEach(medicine -> {
+            medicineMapper.updateById(medicine); // 假设使用MyBatis
+        });
+    }
 }
